@@ -16,7 +16,7 @@ Chowdhury, A.K., Dang, T.D., Nguyen, H.T., Koh, R., and Galelli, S., (2020a). Th
 
 Chowdhury, A.K., Kern, J., Dang, T.D. and Galelli, S., (2020b). PowNet: A Network-Constrained Unit Commitment/Economic Dispatch Model for Large-Scale Power Systems Analysis. Journal of Open Research Software, 8(1), p.5. DOI: http://doi.org/10.5334/jors.302.
 
-In addition, each release of PowNet-Thailand is achieved on Zenodo with a DOI, that can be found [here](https://doi.org/10.5281/zenodo.4040851).
+In addition, each release of PowNet-Thailand is achieved on Zenodo with a DOI, that can be found [here](https://zenodo.org/record/4040851#.X2iFQWhKguU).
 
 # Contact
 For questions and feedback related to PowNet-Thailand, please send an email to afm.chowdhury@uon.edu.au (AFM Kamal Chowdhury) or stefano_galelli@sutd.edu.sg (Stefano Galelli).
