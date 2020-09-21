@@ -1,4 +1,4 @@
-![license MIT](https://img.shields.io/github/license/kamal0013/PowNet) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3756642.svg)](https://doi.org/10.5281/zenodo.3756642)
+![license MIT](https://img.shields.io/github/license/kamal0013/PowNet) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4040851.svg)](https://doi.org/10.5281/zenodo.4040851)
 # PowNet-Thailand: Network-constrained Unit Commitment / Economic Dispatch model for the Thai power system with sample data
 PowNet-Thailand is an implementation of [PowNet](https://github.com/kamal0013/PowNet) model on the Thai power system. The model is developed based on the load (domestic and exports) and infrastructure (power plants, substations, and high-voltage transmission lines) of the Thai power system operated in 2016, including a number of Laotian hydro and thermal power plants that supply to Thailand. The power systems’ data are mostly collected from publicly available reports, published by Electricity Generating Authority of Thailand (EGAT), Energy Policy and Planning Office (EPPO) – Thai Ministry of Energy, Electricite Du Laos (EDL), and the Department of Energy Policy and Planning (DEPP) – Laotian Ministry of Energy and Mine. The hydropower budget are simulated separately by using [VIC-Res](https://github.com/thanhiwer/VICRes). Please refer to Chowdhury et al. (2020a) for additional details on the power system and model setup.
 
@@ -16,7 +16,7 @@ Chowdhury, A.K., Dang, T.D., Nguyen, H.T., Koh, R., and Galelli, S., (2020a). Th
 
 Chowdhury, A.K., Kern, J., Dang, T.D. and Galelli, S., (2020b). PowNet: A Network-Constrained Unit Commitment/Economic Dispatch Model for Large-Scale Power Systems Analysis. Journal of Open Research Software, 8(1), p.5. DOI: http://doi.org/10.5334/jors.302.
 
-In addition, each release of PowNet-Thailand is achieved on Zenodo with a DOI, that can be found [here](link).
+In addition, each release of PowNet-Thailand is achieved on Zenodo with a DOI, that can be found [here](https://doi.org/10.5281/zenodo.4040851).
 
 # Contact
 For questions and feedback related to PowNet-Thailand, please send an email to afm.chowdhury@uon.edu.au (AFM Kamal Chowdhury) or stefano_galelli@sutd.edu.sg (Stefano Galelli).
