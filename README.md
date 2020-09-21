@@ -2,6 +2,9 @@
 # PowNet-Thailand: Network-constrained Unit Commitment / Economic Dispatch model for the Thai power system with sample data
 PowNet-Thailand is an implementation of [PowNet](https://github.com/kamal0013/PowNet) model on the Thai power system. The model is developed based on the load (domestic and exports) and infrastructure (power plants, substations, and high-voltage transmission lines) of the Thai power system operated in 2016, including a number of Laotian hydro and thermal power plants that supply to Thailand. The power systems’ data are mostly collected from publicly available reports, published by Electricity Generating Authority of Thailand (EGAT), Energy Policy and Planning Office (EPPO) – Thai Ministry of Energy, Electricite Du Laos (EDL), and the Department of Energy Policy and Planning (DEPP) – Laotian Ministry of Energy and Mine. The hydropower budget are simulated separately by using [VIC-Res](https://github.com/thanhiwer/VICRes). Please refer to Chowdhury et al. (2020a) for additional details on the power system and model setup.
 
+# Data and model
+For 2016, both Input and output data with a Python script for a sample analysis are provided. In addition, variable input data (e.g., hydropower budget) for a 30-year (1976-2005) simulation period, used in Chowdhury et al. (2020a), are also provided. Outputs for any of these years can be obtained by running the PowNet-Thailand through the following two steps: (1) change simulation year in ‘pownet_thai_datasetup.py’, and (2) run ‘pownet_thai_solver.py’.
+
 The basic functionalities and input-output structure of PowNet are described in [Chowdhury et al. (2020b)](https://openresearchsoftware.metajnl.com/articles/10.5334/jors.302/). Step-by-step instructions on how to run and customize PowNet for any power system are provided in this [GitHub repository](https://github.com/kamal0013/PowNet).
 
 # License
