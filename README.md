@@ -6,9 +6,6 @@ For 2016, both input and output data with a Python script for a sample analysis 
 
 The basic functionalities and input-output structure of PowNet are described in [Chowdhury et al. (2020b)](https://openresearchsoftware.metajnl.com/articles/10.5334/jors.302/). Step-by-step instructions on how to run and customize PowNet for any power system are provided in this [GitHub repository](https://github.com/kamal0013/PowNet).
 
-# License
-PowNet-Thailand and the data are released under the MIT license.
-
 # Citation
 If you use PowNet-Thailand and/or the data for your research, please cite the following papers:
 
@@ -20,6 +17,9 @@ In addition, each release of PowNet-Thailand is achieved on Zenodo with a DOI, t
 
 # Contact
 For questions and feedback related to PowNet-Thailand, please send an email to afm.chowdhury@uon.edu.au (AFM Kamal Chowdhury) or stefano_galelli@sutd.edu.sg (Stefano Galelli).
+
+# License
+PowNet-Thailand and the data are released under the MIT license.
 
 # Acknowledgment	
 PowNet-Thailand development is supported by Singapore's Ministry of Education (MoE) through the Tier 2 project “Linking water availability to hydropower supply – an engineering systems approach” (Award No. MOE2017-T2-1-143).
