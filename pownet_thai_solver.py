@@ -1,4 +1,4 @@
-from pyomo.opt import SolverFactory
+from pyomo.opt import SolverFactory, SolverStatus
 from pyomo.core import Var
 from pyomo.core import Param
 from operator import itemgetter
@@ -7,7 +7,7 @@ from datetime import datetime
 import os
 
 
-from pownet_thai_datasetup import *
+yr = 2016
 
 
 ##run pownet (a year will run in four quarters)
@@ -15,30 +15,27 @@ for q in range(0,4):
     if q == 0:
         start = 1
         end  = 90      
-        from pownet_thai_modeld import model
 
     if q == 1:
         start = 91
         end  = 181        
-        from pownet_thai_modeld import model
 
     if q == 2:
         start = 182
         end  = 273        
-        from pownet_thai_modeln import model
 
     if q == 3:
         start = 274
-        end  = 365        
-        from pownet_thai_modeln import model
+        end  = 365 
         
-    
+    from pownet_thai_model import model
     ##create instance with data
     instance = model.create_instance('./input/pownet_thai_v1_data_'+str(yr)+'.dat')
     
     ##solver, threads    
     opt = SolverFactory("gurobi") ##gurobi SolverFactory("CPLEX")
     opt.options["threads"] = 1
+    opt.options["TimeLimit"] = 600 ##in seconds 
     H = instance.HorizonHours
     K=range(1,H+1)        
         
@@ -85,8 +82,17 @@ for q in range(0,4):
          #load Hydropower time series data
             for i in K:
                 instance.HorizonHydroImport[z,i] = instance.SimHydroImport[z,(day-1)*24+i]
+        
+        for z in instance.Generators:
+         #load Deratef time series data 
+             for i in K:
+                 instance.HorizonDeratef[z,i] = instance.SimDeratef[z,(day-1)*24+i]
 
         thai_result = opt.solve(instance,tee=True) ##,tee=True
+        
+        if thai_result.solver.status == SolverStatus.aborted: #max time limit reached 
+            thai_result.solver.status = SolverStatus.warning #change status so that results can be loaded
+            
         instance.solutions.load_from(thai_result)   
 
     #  #The following section is for storing and sorting results
@@ -130,14 +136,20 @@ for q in range(0,4):
                             vlt_angle.append((index[0],index[1]+((day-1)*24),varobject[index].value))   
 
             if a=='mwh':
+                ini_mwh_ = {}
                 for index in varobject:
                     if int(index[1]>0 and index[1]<25):
-                        mwh.append((index[0],index[1]+((day-1)*24),varobject[index].value))  
+                        mwh.append((index[0],index[1]+((day-1)*24),varobject[index].value))
+                    if int(index[1])==24:
+                        ini_mwh_[index[0]] = varobject[index].value    
 
-            if a=='on':        
+            if a=='on': 
+                ini_on_ = {} 
                 for index in varobject:
                     if int(index[1]>0 and index[1]<25):
                         on.append((index[0],index[1]+((day-1)*24),varobject[index].value))
+                    if int(index[1])==24:
+                        ini_on_[index[0]] = varobject[index].value
 
             if a=='switch':  
                 for index in varobject:
@@ -155,7 +167,11 @@ for q in range(0,4):
                 for index in varobject:
                     if int(index[1]>0 and index[1]<25):
                         nrsv.append((index[0],index[1]+((day-1)*24),varobject[index].value))
-
+                        
+        # Update initialization values for "on" and "mwh"
+        for z in instance.Generators:
+            instance.ini_on[z] = round(ini_on_[z])
+            instance.ini_mwh[z] = max(round(ini_mwh_[z],2),0)  
 
         print(day)
         print(str(datetime.now()))
