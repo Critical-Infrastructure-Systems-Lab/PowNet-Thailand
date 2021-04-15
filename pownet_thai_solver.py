@@ -35,7 +35,7 @@ for q in range(0,4):
     ##solver, threads    
     opt = SolverFactory("gurobi") ##gurobi SolverFactory("CPLEX")
     opt.options["threads"] = 1
-    opt.options["TimeLimit"] = 600 ##in seconds 
+    opt.options["TimeLimit"] = 120 ##in seconds 
     H = instance.HorizonHours
     K=range(1,H+1)        
         
