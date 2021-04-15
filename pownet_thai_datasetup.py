@@ -24,10 +24,12 @@ data_name = './input/pownet_thai_v1_data_'+str(yr)+''
 
 #read thermo plant parameters into DataFrame
 df_gen = pd.read_csv('./input/data_thai_thermo_2016.csv',header=0)
+df_gen['ini_on']=0 
+df_gen['ini_mwh']=0 
 
 #read derate factors of dispatchable units for the simulation year
-df_gen_deratef = pd.read_csv('./input/data_thai_thermo_deratef_2016_1976_05.csv',header=0)
-df_gen['deratef'] = df_gen_deratef['deratef_'+str(yr)+'']
+df_gen_deratef = pd.read_csv('input/data_thai_thermo_deratef_'+str(yr)+'.csv',header=0) 
+gen_units = list(df_gen_deratef.columns[4:]) ##v1.3
 
 ##hourly ts of load except the direct exports
 df_load = pd.read_csv('./input/data_thai_load_2016.csv',header=0)   
@@ -418,6 +420,13 @@ with open(''+str(data_name)+'.dat', 'w') as f:
     for z in w_nodes:
         for h in range(0,len(df_wind)): 
             f.write(z + '\t' + str(h+1) + '\t' + str(df_wind.loc[h,z]) + '\n')
+    f.write(';\n\n')
+
+    # Deratef (hourly) 
+    f.write('param:' + '\t' + 'SimDeratef:=' + '\n')      
+    for z in gen_units:
+        for h in range(0,len(df_gen_deratef)): 
+            f.write(z + '\t' + str(h+1) + '\t' + str(df_gen_deratef.loc[h,z]) + '\n')
     f.write(';\n\n')
     
 ###### System wide hourly reserve
