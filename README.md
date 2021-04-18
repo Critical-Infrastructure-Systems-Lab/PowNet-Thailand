@@ -9,7 +9,7 @@ The basic functionalities and input-output structure of PowNet are described in 
 # Citation
 If you use PowNet-Thailand and/or the data for your research, please cite the following papers:
 
-Chowdhury, A.K., Dang, T.D., Nguyen, H.T., Koh, R., and Galelli, S., (2020a). The Greater Mekong's climate-water-energy nexus: how ENSO-triggered regional droughts affect power supply and CO2 emissions. Submitted to Earth’s Future, DOI: https://doi.org/10.1002/essoar.10504393.1.
+Chowdhury, A.K., Dang, T.D., Nguyen, H.T., Koh, R., and Galelli, S., (2021). The Greater Mekong's climate-water-energy nexus: how ENSO-triggered regional droughts affect power supply and CO2 emissions. Earth’s Future, 9, e2020EF001814, DOI: https://doi.org/10.1029/2020EF001814.
 
 Chowdhury, A.K., Kern, J., Dang, T.D. and Galelli, S., (2020b). PowNet: A Network-Constrained Unit Commitment/Economic Dispatch Model for Large-Scale Power Systems Analysis. Journal of Open Research Software, 8(1), p.5. DOI: http://doi.org/10.5334/jors.302.
 
