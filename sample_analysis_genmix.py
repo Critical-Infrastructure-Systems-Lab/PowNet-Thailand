@@ -66,52 +66,52 @@ mwh = pd.concat(
     [gen_thermo, gen_hydro, gen_hydro_import, gen_solar, gen_wind],
     axis = 0)
 mwh = mwh.groupby(['Type', 'Time']).sum().unstack('Type').reset_index()
-mwh.reset_index()
+# mwh = mwh.reset_index(drop=True)
 
 
-mwh_subset = mwh[mwh['Time'] < 25]
-mwh_subset.columns = mwh_subset.columns.get_level_values(1)
-mwh_subset = mwh_subset.drop('', axis=1)
+# mwh_subset = mwh[mwh['Time'] < 25]
+# mwh_subset.columns = mwh_subset.columns.get_level_values(1)
+# mwh_subset = mwh_subset.drop('', axis=1)
 
-mwh_subset['coal'] = mwh_subset['coal_imp'] + mwh_subset['coal_st']
-mwh_subset['gas'] = mwh_subset['gas_cc'] \
-    + mwh_subset['gas_gt'] + mwh_subset['gas_ic'] + + mwh_subset['gas_st']
-mwh_subset['oil'] = mwh_subset['oil_gt'] \
-    + mwh_subset['oil_ic'] + mwh_subset['oil_st']
+# mwh_subset['coal'] = mwh_subset['coal_imp'] + mwh_subset['coal_st']
+# mwh_subset['gas'] = mwh_subset['gas_cc'] \
+#     + mwh_subset['gas_gt'] + mwh_subset['gas_ic'] + + mwh_subset['gas_st']
+# mwh_subset['oil'] = mwh_subset['oil_gt'] \
+#     + mwh_subset['oil_ic'] + mwh_subset['oil_st']
     
-cols2drop = [
-    'coal_imp', 'coal_st', 'gas_cc', 'gas_gt', 'gas_ic', 'gas_st',
-    'oil_gt', 'oil_ic', 'oil_st'
-    ]
+# cols2drop = [
+#     'coal_imp', 'coal_st', 'gas_cc', 'gas_gt', 'gas_ic', 'gas_st',
+#     'oil_gt', 'oil_ic', 'oil_st'
+#     ]
 
-mwh_subset = mwh_subset.drop(cols2drop, axis=1)
-
-
-fig, ax = plt.subplots()
-mwh_subset.plot(kind='bar', stacked=True, ax=ax)
-ax.legend(bbox_to_anchor=(1, 1.05))
-plt.show()
+# mwh_subset = mwh_subset.drop(cols2drop, axis=1)
 
 
-###########
-thermo_bytype = round(gen_thermo.groupby(['Type'])['Value'].sum()/1000,1)
-hydro_byplant = round(gen_hydro.groupby(['Node'])['Value'].sum()/1000,1)
-hydro_import_byplant = round(gen_hydro_import.groupby(['Node'])['Value'].sum()/1000,1)
-solar_byplant = round(gen_solar.groupby(['Node'])['Value'].sum()/1000,1)
-wind_byplant = round(gen_wind.groupby(['Node'])['Value'].sum()/1000,1)
+# fig, ax = plt.subplots()
+# mwh_subset.plot(kind='bar', stacked=True, ax=ax)
+# ax.legend(bbox_to_anchor=(1, 1.05))
+# plt.show()
+
+
+# ###########
+# thermo_bytype = round(gen_thermo.groupby(['Type'])['Value'].sum()/1000,1)
+# hydro_byplant = round(gen_hydro.groupby(['Node'])['Value'].sum()/1000,1)
+# hydro_import_byplant = round(gen_hydro_import.groupby(['Node'])['Value'].sum()/1000,1)
+# solar_byplant = round(gen_solar.groupby(['Node'])['Value'].sum()/1000,1)
+# wind_byplant = round(gen_wind.groupby(['Node'])['Value'].sum()/1000,1)
 
 
 
-hydro_gwh = sum(hydro_byplant)
-hydro_import_gwh = sum(hydro_import_byplant)
-solar_gwh = sum(solar_byplant)
-wind_gwh = sum(wind_byplant)
+# hydro_gwh = sum(hydro_byplant)
+# hydro_import_gwh = sum(hydro_import_byplant)
+# solar_gwh = sum(solar_byplant)
+# wind_gwh = sum(wind_byplant)
 
-gen_gwh = thermo_bytype
-gen_gwh['hydro'] = hydro_gwh
-gen_gwh['hydro_import'] = hydro_import_gwh
-gen_gwh['solar'] = solar_gwh
-gen_gwh['wind'] = wind_gwh
+# gen_gwh = thermo_bytype
+# gen_gwh['hydro'] = hydro_gwh
+# gen_gwh['hydro_import'] = hydro_import_gwh
+# gen_gwh['solar'] = solar_gwh
+# gen_gwh['wind'] = wind_gwh
 
-gen_gwh, sum(gen_gwh)
+# gen_gwh, sum(gen_gwh)
 
